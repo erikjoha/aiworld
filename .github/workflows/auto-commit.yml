@@ -20,8 +20,10 @@ jobs:
           python-version: '3.11'
       - name: Run generator
         run: python scripts/generate_readme.py
+      - name: Run reflection
+        run: python scripts/generate_reflection.py
       - name: Auto-commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: automated update"
+          commit_message: "chore: automated reflection update"
           branch: ${{ github.ref_name }}
