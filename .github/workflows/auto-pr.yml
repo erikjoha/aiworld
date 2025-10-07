@@ -1,0 +1,31 @@
+name: Create PR from changes
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 7 * * 1-5"  # weekdays 07:00 UTC
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run generator
+        run: python scripts/generate_readme.py
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: automated update"
+          title: "chore: automated update"
+          body: "This PR is generated automatically."
+          branch: "chore/auto-update"
+          delete-branch: true
