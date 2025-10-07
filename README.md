@@ -114,3 +114,6 @@ MIT License — free to use, experiment, and build upon.
 > not just doing what they’re told, but *understanding why*.”
 
 — *Erik Johansen*
+
+
+_Updated: 2025-10-07T15:43:18.751446Z_
